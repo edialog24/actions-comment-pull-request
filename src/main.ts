@@ -6,6 +6,7 @@ async function run() {
     const message = core.getInput('message');
     const github_token = core.getInput('GITHUB_TOKEN');
 
+    console.log("message: " + message);
     const context = github.context;
     if (context.payload.pull_request == null) {
         core.setFailed('No pull request found.');
@@ -19,7 +20,7 @@ async function run() {
     const new_comment = octokit.issues.createComment({
         ...context.repo,
         issue_number: pull_request_number,
-        body: "tepp: " + message + " and " + pull_request_reviewers
+        body: "tepp"
       });
 
   } catch (error) {
